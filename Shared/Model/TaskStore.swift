@@ -7,10 +7,10 @@
 
 import Foundation
 
-class TaskScore: ObservableObject {
+class TaskStore: ObservableObject {
     @Published var tasks: [Task]
     
-    init(task: [Task] = []) {
+    init(tasks: [Task] = []) {
         self.tasks = tasks
     }
 }
