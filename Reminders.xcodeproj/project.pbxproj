@@ -13,6 +13,9 @@
 		99E733CA2799C093001A5DCE /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 99E733B82799C091001A5DCE /* ContentView.swift */; };
 		99E733CB2799C093001A5DCE /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 99E733B92799C093001A5DCE /* Assets.xcassets */; };
 		99E733CC2799C093001A5DCE /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 99E733B92799C093001A5DCE /* Assets.xcassets */; };
+		99E733D82799C1B8001A5DCE /* Task.swift in Sources */ = {isa = PBXBuildFile; fileRef = 99E733D72799C1B8001A5DCE /* Task.swift */; };
+		99E733DA2799C22F001A5DCE /* TaskPriority.swift in Sources */ = {isa = PBXBuildFile; fileRef = 99E733D92799C22F001A5DCE /* TaskPriority.swift */; };
+		99E733DC2799C2A6001A5DCE /* TaskStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = 99E733DB2799C2A6001A5DCE /* TaskStore.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -22,6 +25,9 @@
 		99E733BE2799C093001A5DCE /* Reminders.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Reminders.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		99E733C42799C093001A5DCE /* Reminders.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Reminders.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		99E733C62799C093001A5DCE /* macOS.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = macOS.entitlements; sourceTree = "<group>"; };
+		99E733D72799C1B8001A5DCE /* Task.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Task.swift; sourceTree = "<group>"; };
+		99E733D92799C22F001A5DCE /* TaskPriority.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TaskPriority.swift; sourceTree = "<group>"; };
+		99E733DB2799C2A6001A5DCE /* TaskStore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TaskStore.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -90,6 +96,9 @@
 		99E733D62799C0B4001A5DCE /* Model */ = {
 			isa = PBXGroup;
 			children = (
+				99E733D72799C1B8001A5DCE /* Task.swift */,
+				99E733D92799C22F001A5DCE /* TaskPriority.swift */,
+				99E733DB2799C2A6001A5DCE /* TaskStore.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -192,7 +201,10 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				99E733DC2799C2A6001A5DCE /* TaskStore.swift in Sources */,
 				99E733C92799C093001A5DCE /* ContentView.swift in Sources */,
+				99E733D82799C1B8001A5DCE /* Task.swift in Sources */,
+				99E733DA2799C22F001A5DCE /* TaskPriority.swift in Sources */,
 				99E733C72799C093001A5DCE /* RemindersApp.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
