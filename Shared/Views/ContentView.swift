@@ -15,6 +15,9 @@ struct ContentView: View {
     // Controls whether the add task is showing
     @State private var showingAddTask = false
     
+    // Whether to show completed tasks or not
+    @State var showingCompletedTasks = true
+    
     var body: some View {
         List {
             ForEach(store.tasks) { task in
@@ -24,7 +27,6 @@ struct ContentView: View {
             .onDelete(perform: store.deleteItems)
             .onMove(perform: store.moveItems)
         }
-
         .navigationTitle("Reminders")
         .toolbar {
             ToolbarItem(placement: .primaryAction) {
@@ -35,6 +37,18 @@ struct ContentView: View {
             
             ToolbarItem(placement: .navigationBarLeading) {
                 EditButton()
+            }
+            
+            ToolbarItem(placement: .bottomBar) {
+                // Allow user to toggle visibility of tasks based on their completion status
+                //
+                //     CONDITION TO EVALUATE         WHEN TRUE              WHEN FALSE
+                Button(showingCompletedTasks ? "Hide Completed Task" : "Show Completed Tasks") {
+                    print("Value of showingCompletedTasks was: \(showingCompletedTasks)")
+                    showingCompletedTasks.toggle()
+                    print("Value of showingCompletedTasks is now: \(showingCompletedTasks)")
+
+                }
             }
         }
         .sheet(isPresented: $showingAddTask) {
