@@ -18,6 +18,9 @@ struct ContentView: View {
     // Whether to show completed tasks or not
     @State var showingCompletedTasks = true
     
+    // What priority of tasks to show
+    @State private var selectPriorityForVisibleTasks: VisibleTaskPriority = .all
+    
     // Whether to re-compute the view to show changes the list
     // We never actually show this value, but toggling it from "true" to "false" or vice-versa makes SwiftUI update the user interface, since a property marked with @State has changed
     @State var listShouldUpdate = false
@@ -27,24 +30,49 @@ struct ContentView: View {
         // Has the list been asked to update?
         let _ = print("listShouldUpdate has been toggled. Current value is: \(listShouldUpdate)")
         
-        List {
-            ForEach(store.tasks) { task in
-                
-                if showingCompletedTasks {
-                    // Show all tasks completed or incomplete
-                    TaskCell(task: task, triggerListUpdate: .constant(true))
-                } else {
-                    
-                    // Only show incomplete tasks
-                    if task.completed == false {
-                        TaskCell(task: task, triggerListUpdate: $listShouldUpdate)
-                    }
-                    
-                }
+        // What is the selected priority level fofr task filtering?
+        let _ = print("Filtering tasks by this priority: \(selectPriorityForVisibleTasks)")
+        
+        VStack {
+            
+            // Label for picker
+            Text("Filter by...")
+                .font(Font.caption.smallCaps())
+                .foregroundColor(.secondary)
+            
+            // Picker to allow user to select what tasks to show
+            Picker("Priority", selection: $selectPriorityForVisibleTasks) {
+                Text(VisibleTaskPriority.all.rawValue)
+                    .tag(VisibleTaskPriority.all)
+                Text(VisibleTaskPriority.low.rawValue)
+                    .tag(VisibleTaskPriority.low)
+                Text(VisibleTaskPriority.medium.rawValue)
+                    .tag(VisibleTaskPriority.medium)
+                Text(VisibleTaskPriority.high.rawValue)
+                    .tag(VisibleTaskPriority.high)
             }
-            // View modifier invokes the function on the view model, "store"
-            .onDelete(perform: store.deleteItems)
-            .onMove(perform: store.moveItems)
+            .pickerStyle(.segmented)
+            .padding(.horizontal)
+            
+            List {
+                ForEach(store.tasks) { task in
+                    
+                    if showingCompletedTasks {
+                        // Show all tasks completed or incomplete
+                        TaskCell(task: task, triggerListUpdate: .constant(true))
+                    } else {
+                        
+                        // Only show incomplete tasks
+                        if task.completed == false {
+                            TaskCell(task: task, triggerListUpdate: $listShouldUpdate)
+                        }
+                        
+                    }
+                }
+                // View modifier invokes the function on the view model, "store"
+                .onDelete(perform: store.deleteItems)
+                .onMove(perform: store.moveItems)
+            }
         }
         .navigationTitle("Reminders")
         .toolbar {
