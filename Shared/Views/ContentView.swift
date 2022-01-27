@@ -23,7 +23,7 @@ struct ContentView: View {
             ForEach(store.tasks) { task in
                 
                 if showingCompletedTasks {
-                    // Show all tasks completed or incomplete\
+                    // Show all tasks completed or incomplete
                     TaskCell(task: task)
                 } else {
                     
