@@ -14,6 +14,10 @@ class TaskStore: ObservableObject {
     
     // MARK: Initializers
     init(tasks: [Task] = []) {
+        
+//        // Get a URL that points to the saved JSON data containing our list of tasks
+//        let filename = getDocumentDirectory
+        
         self.tasks = tasks
     }
     
@@ -31,6 +35,8 @@ class TaskStore: ObservableObject {
         // These arguments are automatically populated for us by the .onMove view modifier provided by the SwiftUI framework
         tasks.move(fromOffsets: source, toOffset: destination)
     }
+    
+    
 }
 
 let testStore = TaskStore(tasks: testData)
